@@ -26,4 +26,4 @@ RDSExpert is an advanced RDS/RBDS decoder that allows you to view a large amount
 5 - Access your webserver's configuration panel by using the admin account, click "Plugins" and select "RDSExpert by Lucas Gallone [v1.0]" in the plugins list, then save the changes.
 <br>
 <br>
-6 - Restart your TEF webserver again... and enjoy!
+You should see the RDSExpert plugin appearing on your webserver now. Click on it and enjoy!
