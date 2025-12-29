@@ -4,7 +4,7 @@ This plugin allows you to use the RDSExpert interface directly on TEF webservers
 <br>
 It works both with HTTP and HTTPS servers.
 <br>
-When the plugin is launched, the connection to your server's websocket is established automatically.
+When the plugin is started, the connection to your server's websocket is established automatically.
 <br>
 <br>
 RDSExpert is an advanced RDS/RBDS decoder that allows you to view a large amount of technical data related to the Radio Data System.
