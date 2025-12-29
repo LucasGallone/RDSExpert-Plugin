@@ -5,7 +5,7 @@ This plugin allows you to use the RDSExpert interface directly on TEF webservers
 RDSExpert is an advanced RDS/RBDS decoder that allows you to view a large amount of technical data related to the Radio Data System.
 <br>
 [For documentation about the decoder itself, please click here.](https://github.com/LucasGallone/RDSExpert/blob/main/README.md)
-# Instructions for installing the plugin on your TEF webserver
+# Installation instructions
 1 - Download the entire repository on GitHub by clicking the "Code" button then "Download ZIP".
 <br>
 <br>
