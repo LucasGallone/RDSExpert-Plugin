@@ -12,7 +12,7 @@ RDSExpert is an advanced RDS/RBDS decoder that allows you to view a large amount
 2 - Extract the ZIP file content.
 <br>
 <br>
-3 - Place the RDSExpert-Plugin.js file and the RDSExpert folder (which contains RDSExpert-Frontend.js) in the "plugins" folder of your TEF webserver.
+3 - Place the `RDSExpert-Plugin.js` file and the `RDSExpert` folder (which contains `RDSExpert-Frontend.js`) in the `plugins` folder of your TEF webserver.
 <br>
 <br>
 4 - Restart your TEF webserver.
