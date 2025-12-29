@@ -1,4 +1,4 @@
-# RDSExpert-Plugin
+# RDSExpert Plugin for TEF webservers
 This plugin allows you to use the RDSExpert interface directly on TEF webservers.
 <br>
 <br>
