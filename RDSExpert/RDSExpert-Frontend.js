@@ -17,8 +17,7 @@
     const fullRdsUrl = `${rdsExpertBaseUrl}?url=${currentOrigin}`;
 
     // --- Window dimensions at startup (You can edit the values as you wish) ---
-    // It is not recommended to use a value lower than 768 for the window width as this may break the display of certain values such as RT or the Groups Analyzer!
-    const defW = 768;  // Window width
+    const defW = 768;  // Window width - A value lower than 768 may break the display: Edit with caution!
     const defH = 780;  // Window height
     const margin = 0; // Window margin in relation to the screen
 
