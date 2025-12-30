@@ -16,7 +16,7 @@
 
     const fullRdsUrl = `${rdsExpertBaseUrl}?url=${currentOrigin}`;
 
-    // --- Default window dimensions (Don't change these values unless you really want to, favor the placement memorization option!) ---
+    // --- Default window dimensions (Don't change these values unless you really want to, favor the position memorization option!) ---
     const defW = 768; 
     const defH = 800; 
     const margin = 0; 
@@ -87,7 +87,7 @@
         #rds-expert-button.active i { color: var(--color-4); }
     `;
 
-    // LocalStorage helpers to keep user preferences (placement, size, and settings)
+    // LocalStorage helpers to keep user preferences (Position, size, and settings)
     function savePref(key, val) { localStorage.setItem('rds_exp_' + key, val); }
     function getPref(key) { return localStorage.getItem('rds_exp_' + key); }
 
@@ -103,7 +103,7 @@
         container.innerHTML = `
             <div class="rds-exp-drag-zone"></div>
             <div class="rds-exp-settings-bar">
-                <label><input type="checkbox" id="rds-rem-pos" ${remChecked}> Remember the window placement/size</label>
+                <label><input type="checkbox" id="rds-rem-pos" ${remChecked}> Remember the window position/size</label>
                 <label><input type="checkbox" id="rds-allow-small" ${allowChecked}> Enable width adjustment (May break the display!)</label>
             </div>
             <div class="rds-exp-close-circle" title="Close">✕</div>
@@ -256,4 +256,5 @@
     }
 
     createButton('rds-expert-button');
+
 })();
