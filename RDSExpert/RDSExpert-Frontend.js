@@ -1,12 +1,12 @@
 /**
  * ************************************************
- * RDS Expert Plugin for FM-DX Webserver (v1.0)
+ * RDS Expert Plugin for FM-DX Webserver (v1.1)
  * ************************************************
  */
 
 (() => {
     const plugin_name = 'RDSExpert';
-    const plugin_version = '1.0';
+    const plugin_version = '1.1';
 
     const currentProtocol = window.location.protocol;
     const currentOrigin = window.location.origin;
@@ -16,14 +16,15 @@
 
     const fullRdsUrl = `${rdsExpertBaseUrl}?url=${currentOrigin}`;
 
-    // --- Window dimensions at startup (You can edit the values as you wish) ---
-    const defW = 768;  // Window width - A value lower than 768 may break the display: Edit with caution!
-    const defH = 780;  // Window height
-    const margin = 0; // Window margin in relation to the screen
+    // --- Default window dimensions (Don't change these values unless you really want to, favor the placement memorization option!) ---
+    const defW = 768; 
+    const defH = 800; 
+    const margin = 0; 
 
     let isVisible = false;
     let container = null;
 
+    // CSS styling for the plugin interface, including the container, settings bar, and custom scrollbar/buttons
     const rdsExpCss = `
         #rds-expert-container {
             position: fixed; 
@@ -38,13 +39,11 @@
             width: ${defW}px; 
             height: ${defH}px; 
             top: ${margin}px;
-            /* Right-side placement by default at startup */
             left: calc(100vw - ${defW}px - ${margin}px);
             min-width: 400px;
             min-height: 300px;
         }
 
-        /* Window movement bar */
         .rds-exp-drag-zone { 
             height: 18px; 
             background: var(--color-2, #252525); 
@@ -53,8 +52,20 @@
             border-bottom: 1px solid var(--color-3, #333); 
             flex-shrink: 0; 
         }
+
+        .rds-exp-settings-bar {
+            background: #1a1a1a;
+            padding: 5px 10px;
+            display: flex;
+            gap: 15px;
+            font-size: 11px;
+            color: #ccc;
+            border-bottom: 1px solid #333;
+            align-items: center;
+        }
+        .rds-exp-settings-bar label { cursor: pointer; display: flex; align-items: center; gap: 4px; }
+        .rds-exp-settings-bar input { cursor: pointer; margin: 0; }
         
-        /* Closure button */
         .rds-exp-close-circle {
             position: absolute; top: 25px; right: 15px; z-index: 10001; cursor: pointer;
             background: rgba(0,0,0,0.6); color: var(--color-text, #ccc); 
@@ -72,58 +83,83 @@
             cursor: nwse-resize; background: linear-gradient(135deg, transparent 50%, var(--color-3, #444) 50%); z-index: 10002;
         }
 
-        /* --- Sidebar button style --- */
-        #rds-expert-button i { 
-            color: var(--color-4);
-            opacity: 1; 
-        }
-        #rds-expert-button.active i { 
-            color: var(--color-4);
-        }
+        #rds-expert-button i { color: var(--color-4); opacity: 1; }
+        #rds-expert-button.active i { color: var(--color-4); }
     `;
 
+    // LocalStorage helpers to keep user preferences (placement, size, and settings)
+    function savePref(key, val) { localStorage.setItem('rds_exp_' + key, val); }
+    function getPref(key) { return localStorage.getItem('rds_exp_' + key); }
+
+    // Generates the DOM elements for the plugin interface
     function createUI() {
         if (container) return;
         container = document.createElement('div');
         container.id = 'rds-expert-container';
+
+        const remChecked = getPref('remember') === 'true' ? 'checked' : '';
+        const allowChecked = getPref('allow_small') === 'true' ? 'checked' : '';
+
         container.innerHTML = `
             <div class="rds-exp-drag-zone"></div>
+            <div class="rds-exp-settings-bar">
+                <label><input type="checkbox" id="rds-rem-pos" ${remChecked}> Remember the window placement/size</label>
+                <label><input type="checkbox" id="rds-allow-small" ${allowChecked}> Enable width adjustment (May break the display!)</label>
+            </div>
             <div class="rds-exp-close-circle" title="Close">✕</div>
             <iframe id="rds-expert-iframe" src="${fullRdsUrl}"></iframe>
             <div class="rds-exp-resizer"></div>
         `;
         document.body.appendChild(container);
+        
         container.querySelector('.rds-exp-close-circle').onclick = togglePlugin;
+        container.querySelector('#rds-rem-pos').onchange = (e) => savePref('remember', e.target.checked);
+        container.querySelector('#rds-allow-small').onchange = (e) => savePref('allow_small', e.target.checked);
 
         setupDrag(container.querySelector('.rds-exp-drag-zone'), container);
         setupResize(container.querySelector('.rds-exp-resizer'), container);
     }
 
+    // Handles opening/closing logic. Completely removes the container when closed to stop the iframe process.
     function togglePlugin() {
         isVisible = !isVisible;
         const $btn = $('#rds-expert-button');
 
         if (isVisible) {
             createUI();
-            // Forced reset of the window position and size at each startup
             const $cont = $('#rds-expert-container');
-            $cont.css({
-                'display': 'flex',
-                'width': defW + 'px',
-                'height': defH + 'px',
-                'top': margin + 'px',
-                'left': 'calc(100vw - ' + defW + 'px - ' + margin + 'px)'
-            });
+            
+            // Apply saved dimensions if 'Remember' is enabled, otherwise use default values
+            if (getPref('remember') === 'true' && getPref('w')) {
+                $cont.css({
+                    'display': 'flex',
+                    'width': getPref('w') + 'px',
+                    'height': getPref('h') + 'px',
+                    'top': getPref('t') + 'px',
+                    'left': getPref('l') + 'px'
+                });
+            } else {
+                let safeH = Math.min(defH, window.innerHeight - margin);
+                $cont.css({
+                    'display': 'flex',
+                    'width': defW + 'px',
+                    'height': safeH + 'px',
+                    'top': margin + 'px',
+                    'left': 'calc(100vw - ' + defW + 'px - ' + margin + 'px)'
+                });
+            }
             $btn.addClass('active');
         } else {
+            // Container removal to ensure background activity stops when the plugin is stopped
             if (container) {
                 container.remove();
-                container = null; 
+                container = null;
             }
             $btn.removeClass('active');
         }
     }
 
+    // Plugin icon injection into the webserver header
     function createButton(buttonId) {
         (function waitForFunction() {
             const observer = new MutationObserver((mutationsList, observer) => {
@@ -145,33 +181,76 @@
         $("<style>").prop("type", "text/css").html(rdsExpCss).appendTo("head");
     }
 
+    // Handles window movement with strict 4-way screen boundary protection
     function setupDrag(handle, el) {
         let p1 = 0, p2 = 0, p3 = 0, p4 = 0;
         handle.onmousedown = (e) => {
             p3 = e.clientX; p4 = e.clientY;
             document.onmouseup = () => {
                 document.onmouseup = null; document.onmousemove = null;
+                if (getPref('remember') === 'true') {
+                    savePref('t', el.offsetTop);
+                    savePref('l', el.offsetLeft);
+                }
             };
             document.onmousemove = (e) => {
                 p1 = p3 - e.clientX; p2 = p4 - e.clientY; p3 = e.clientX; p4 = e.clientY;
                 let newTop = el.offsetTop - p2;
+                let newLeft = el.offsetLeft - p1;
+                
+                let maxTop = window.innerHeight - el.offsetHeight;
+                let maxLeft = window.innerWidth - el.offsetWidth;
+
+                // Security feature that prevents the window from exceeding the screen limits
                 if (newTop < 0) newTop = 0; 
+                if (newTop > maxTop) newTop = Math.max(0, maxTop);
+                if (newLeft < 0) newLeft = 0;
+                if (newLeft > maxLeft) newLeft = Math.max(0, maxLeft);
+
                 el.style.top = newTop + "px"; 
-                el.style.left = (el.offsetLeft - p1) + "px";
+                el.style.left = newLeft + "px";
             };
         };
     }
 
+    /**
+     * Handles manual resizing of the window:
+     * 1. Controls width based on user preference (Locked at 768px or free).
+     * 2. Enforces screen boundary security for both right and bottom edges.
+     * 3. Maintains a minimum height of 300px for usability.
+     * 4. Keep new dimensions if the 'Remember' option is enabled.
+     */
     function setupResize(handle, el) {
         handle.onmousedown = (e) => {
             e.preventDefault();
             window.onmousemove = (e) => {
-                const w = e.clientX - el.offsetLeft; const h = e.clientY - el.offsetTop;
-                if (w >= 350) el.style.width = w + "px"; 
-                if (h >= 300) el.style.height = h + "px";
+                const isAllowWidthChange = document.getElementById('rds-allow-small').checked;
+
+                // Width management
+                if (isAllowWidthChange) {
+                    let w = e.clientX - el.offsetLeft;
+                    let maxW = window.innerWidth - el.offsetLeft;
+                    if (w >= 400 && w <= maxW) el.style.width = w + "px";
+                    else if (w > maxW) el.style.width = maxW + "px";
+                } else {
+                    el.style.width = defW + "px";
+                }
+
+                // Height management
+                let h = e.clientY - el.offsetTop;
+                let maxH = window.innerHeight - el.offsetTop;
+                if (h >= 300 && h <= maxH) el.style.height = h + "px";
+                else if (h > maxH) el.style.height = maxH + "px";
             };
             window.onmouseup = () => {
+                // Cleanup and save dimensions
                 window.onmousemove = null;
+                if (getPref('remember') === 'true') {
+                    savePref('w', el.offsetWidth);
+                    savePref('h', el.offsetHeight);
+                    savePref('t', el.offsetTop);
+                    savePref('l', el.offsetLeft);
+                }
             };
         };
     }
