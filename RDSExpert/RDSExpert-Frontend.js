@@ -1,20 +1,21 @@
 /**
  * ************************************************
- * RDS Expert Plugin for FM-DX Webserver (v1.1)
+ * RDS Expert Plugin for FM-DX Webserver (v1.2)
  * ************************************************
  */
 
 (() => {
     const plugin_name = 'RDSExpert';
-    const plugin_version = '1.1';
+    const plugin_version = '1.2';
 
     const currentProtocol = window.location.protocol;
-    const currentOrigin = window.location.origin;
+    const currentFullUrl = window.location.origin + window.location.pathname;
+    
     let rdsExpertBaseUrl = (currentProtocol === 'https:') 
         ? 'https://lucasgallone.github.io/RDSExpert/' 
         : 'http://rdsexpert.fmdx-webserver.nl:8080/';
 
-    const fullRdsUrl = `${rdsExpertBaseUrl}?url=${currentOrigin}`;
+    const fullRdsUrl = `${rdsExpertBaseUrl}?url=${currentFullUrl}`;
 
     // --- Default window dimensions (Don't change these values unless you really want to, favor the position memorization option!) ---
     const defW = 768; 
@@ -165,11 +166,18 @@
             const observer = new MutationObserver((mutationsList, observer) => {
                 if (typeof addIconToPluginPanel === 'function') {
                     observer.disconnect();
-                    addIconToPluginPanel(buttonId, 'RDSExpert', 'solid', 'rss', 'Advanced RDS/RBDS decoder');
+                    addIconToPluginPanel(buttonId, 'RDSExpert', 'solid', 'rss', 'Advanced RDS/RBDS decoder (v1.2)');
                     const buttonObserver = new MutationObserver(() => {
-                        const $pluginButton = $(`#${buttonId}`);
-                        if ($pluginButton.length > 0) {
-                            $pluginButton.on('click', togglePlugin);
+                        const pluginButton = document.getElementById(`${buttonId}`);
+                        if (pluginButton) {
+                            // Prevents the plugin from starting on smartphones due to insufficient resolution
+                            if (window.innerWidth < 480 && window.innerHeight > window.innerWidth) {
+                                pluginButton.setAttribute('data-tooltip', 'Not compatible with smartphones!');
+                                $(pluginButton).css('opacity', '0.4');
+                                // Disable the click on smartphones
+                            } else {
+                                $(pluginButton).on('click', togglePlugin);
+                            }
                             buttonObserver.disconnect();
                         }
                     });
