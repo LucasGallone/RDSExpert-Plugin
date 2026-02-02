@@ -9,7 +9,7 @@ When the plugin is started, the connection to your server's RDS websocket is est
 <br>
 RDSExpert is an advanced RDS/RBDS decoder that allows you to view a large amount of technical data related to the Radio Data System.
 <br>
-[For documentation about the decoder itself, please click here.](https://github.com/LucasGallone/RDSExpert/wiki/Getting-started)
+[For documentation about the decoder itself, please click here.](https://github.com/LucasGallone/RDSExpert/wiki/)
 # Installation instructions
 1 - [Download the entire repository as a ZIP file by clicking here.](https://github.com/LucasGallone/RDSExpert-Plugin/archive/refs/heads/main.zip)
 <br>
