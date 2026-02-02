@@ -27,3 +27,6 @@ RDSExpert is an advanced RDS/RBDS decoder that allows you to view a large amount
 <br>
 <br>
 You should see the RDSExpert plugin appearing on your webserver now. Click on it and enjoy!
+<br>
+<br>
+![plugin](https://github.com/user-attachments/assets/ec4e2df8-cf24-4b0f-b6ef-12647ccd96fd)
