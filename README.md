@@ -30,3 +30,5 @@ You should see the RDSExpert plugin appearing on your webserver now. Click on it
 <br>
 <br>
 ![plugin](https://github.com/user-attachments/assets/ec4e2df8-cf24-4b0f-b6ef-12647ccd96fd)
+![plugin-2](https://github.com/user-attachments/assets/088fb8a2-76e8-46d7-ade5-340c09baadcb)
+![plugin-3](https://github.com/user-attachments/assets/c9ccacd6-f9aa-48e5-be29-2c90e152385f)
