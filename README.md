@@ -11,7 +11,7 @@ RDSExpert is an advanced RDS/RBDS decoder that allows you to view a large amount
 <br>
 [For documentation about the decoder itself, please click here.](https://github.com/LucasGallone/RDSExpert/blob/main/README.md)
 # Installation instructions
-1 - Download the entire repository on GitHub by clicking the "Code" button, then "Download ZIP".
+1 - [Download the entire repository by clicking here.](https://github.com/LucasGallone/RDSExpert-Plugin/archive/refs/heads/main.zip)
 <br>
 <br>
 2 - Extract the ZIP file content.
