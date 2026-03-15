@@ -1,12 +1,12 @@
 /**
  * ************************************************
- * RDS Expert Plugin for FM-DX Webserver (v1.2)
+ * RDS Expert Plugin for FM-DX Webserver (v1.3)
  * ************************************************
  */
 
 (() => {
     const plugin_name = 'RDSExpert';
-    const plugin_version = '1.2';
+    const plugin_version = '1.3';
 
     const currentProtocol = window.location.protocol;
     const currentFullUrl = window.location.origin + window.location.pathname;
@@ -114,7 +114,15 @@
         document.body.appendChild(container);
         
         container.querySelector('.rds-exp-close-circle').onclick = togglePlugin;
-        container.querySelector('#rds-rem-pos').onchange = (e) => savePref('remember', e.target.checked);
+        container.querySelector('#rds-rem-pos').onchange = (e) => {
+            savePref('remember', e.target.checked);
+            if (e.target.checked) {
+                savePref('w', container.offsetWidth);
+                savePref('h', container.offsetHeight);
+                savePref('t', container.offsetTop);
+                savePref('l', container.offsetLeft);
+            }
+        };
         container.querySelector('#rds-allow-small').onchange = (e) => savePref('allow_small', e.target.checked);
 
         setupDrag(container.querySelector('.rds-exp-drag-zone'), container);
@@ -166,7 +174,7 @@
             const observer = new MutationObserver((mutationsList, observer) => {
                 if (typeof addIconToPluginPanel === 'function') {
                     observer.disconnect();
-                    addIconToPluginPanel(buttonId, 'RDSExpert', 'solid', 'rss', 'Advanced RDS/RBDS decoder (v1.2)');
+                    addIconToPluginPanel(buttonId, 'RDSExpert', 'solid', 'rss', 'Advanced RDS/RBDS decoder (v1.3)');
                     const buttonObserver = new MutationObserver(() => {
                         const pluginButton = document.getElementById(`${buttonId}`);
                         if (pluginButton) {
@@ -253,6 +261,7 @@
             window.onmouseup = () => {
                 // Cleanup and save dimensions
                 window.onmousemove = null;
+                window.onmouseup = null;
                 if (getPref('remember') === 'true') {
                     savePref('w', el.offsetWidth);
                     savePref('h', el.offsetHeight);
