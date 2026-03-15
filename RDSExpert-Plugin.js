@@ -1,7 +1,7 @@
 // Plugin configuration, this is used in the administration when plugins are loaded
 var pluginConfig = {
     name: 'RDSExpert',
-    version: '1.2',
+    version: '1.3',
     author: 'Lucas Gallone',
     frontEndPath: 'RDSExpert/RDSExpert-Frontend.js'
 }
