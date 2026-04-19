@@ -1,20 +1,25 @@
-# RDSExpert Plugin for TEF webservers
-This plugin allows you to use the RDSExpert interface directly on TEF webservers.
-<br>
-<br>
+# RDSExpert Plugin for FM-DX webservers
+This plugin allows you to use the RDSExpert interface directly on FM-DX webservers.
+
+
+![plugin](https://github.com/user-attachments/assets/ec4e2df8-cf24-4b0f-b6ef-12647ccd96fd)
+
 It works both with HTTP and HTTPS servers.
 <br>
 When the plugin is started, the connection to your server's RDS websocket is established automatically.
-<br>
-<br>
+- - -
 RDSExpert is an advanced RDS/RBDS decoder that allows you to view a large amount of technical data related to the Radio Data System.
 <br>
 -> [For documentation about the decoder itself, please click here.](https://github.com/LucasGallone/RDSExpert/wiki/) <-
+- - -
+<b>⚠️ As of April 19, 2026, connecting to HTTP servers using a local IP address (e.g. localhost, 192.168.1.100, etc.) is no longer possible via Google Chrome, for reasons beyond my control.
+<br>
+This is due to a recent browser update, in which Google has tightened its rules regarding "Private Network Access" (PNA).
 <br>
 <br>
-<b>⚠️ As of April 19, 2026, connections to HTTP servers no longer work in Google Chrome. This is due to a recent update released for the browser.
+Connecting to HTTP servers using a public IP address is still possible. I therefore recommend using a public IP address to connect if your server is public.
 <br>
-I'm currently investigating the issue and try to resolve it. In the meantime, the only solution (a temporary one, I hope!) is to use a different web browser if you wish to use RDSExpert with an HTTP server.</b>
+If you really have to use a local IP address (e.g. 192.168.1.100), your only option is to use a different web browser, such as Mozilla Firefox.</b>
 # Installation instructions
 1 - [Download the entire repository as a ZIP file by clicking here.](https://github.com/LucasGallone/RDSExpert-Plugin/archive/refs/heads/main.zip)
 <br>
@@ -22,19 +27,16 @@ I'm currently investigating the issue and try to resolve it. In the meantime, th
 2 - Extract the ZIP file content.
 <br>
 <br>
-3 - Place the `RDSExpert-Plugin.js` file and the `RDSExpert` folder (which contains `RDSExpert-Frontend.js`) in the `plugins` folder of your TEF webserver.
+3 - Place the `RDSExpert-Plugin.js` file and the `RDSExpert` folder (which contains `RDSExpert-Frontend.js`) in the `plugins` folder of your FM-DX webserver.
 <br>
 <br>
-4 - Restart your TEF webserver.
+4 - Restart your FM-DX webserver.
 <br>
 <br>
 5 - Access your webserver's configuration panel by using the admin account, click "Plugins" and select "RDSExpert by Lucas Gallone" in the plugins list, then save the changes.
 <br>
 <br>
 You should see the RDSExpert plugin appearing on your webserver now. Click on it and enjoy!
-<br>
-<br>
-![plugin](https://github.com/user-attachments/assets/ec4e2df8-cf24-4b0f-b6ef-12647ccd96fd)
 ## Decoded data
 • General features for the station identification: <b>PI code</b>, <b>PS</b>, <b>TP/TA flags</b> (Traffic Program - Traffic Announcement) and <b>Music/Speech switch</b>.
 <br>
