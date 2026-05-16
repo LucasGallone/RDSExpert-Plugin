@@ -12,10 +12,10 @@ RDSExpert is an advanced RDS/RBDS decoder that allows you to view a large amount
 <br>
 -> [For documentation about the decoder itself, please click here.](https://github.com/LucasGallone/RDSExpert/wiki/) <-
 - - -
-<b>⚠️ Important note to Google Chrome users: Since April 2026, connecting to HTTP servers using a local address (e.g. 192.168.1.100) is no longer possible by default. You must disable the "Local Network Access Checks" feature in your web browser to bypass this block implemented by Google, otherwise the connection will fail.</b>
+<b>⚠️ Important note to Google Chrome users: Since April 2026, connecting to HTTP servers using a local address (e.g. 192.168.1.100) is no longer possible by default. You must disable the "Local Network Access Checks" feature in your web browser to bypass this block implemented by Google, otherwise the connection will fail.
 <br>
 <br>
--> To do this, enter `chrome://flags/#local-network-access-check` in the URL bar, then disable the relevant option.
+-> To do this, enter `chrome://flags/#local-network-access-check` in the URL bar, then disable the relevant option.</b>
 # Installation instructions
 1 - [Download the entire repository as a ZIP file by clicking here.](https://github.com/LucasGallone/RDSExpert-Plugin/archive/refs/heads/main.zip)
 <br>
