@@ -16,6 +16,9 @@ RDSExpert is an advanced RDS/RBDS decoder that allows you to view a large amount
 <br>
 <br>
 -> To do this, enter `chrome://flags/#local-network-access-check` in the URL bar, then disable the relevant option.</b>
+<br>
+<br>
+If you are concerned about the potential risks this may cause, it is best to use a different web browser such as Mozilla Firefox.
 # Installation instructions
 1 - [Download the entire repository as a ZIP file by clicking here.](https://github.com/LucasGallone/RDSExpert-Plugin/archive/refs/heads/main.zip)
 <br>
