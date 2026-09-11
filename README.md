@@ -28,7 +28,7 @@ RDSExpert is an advanced RDS/RBDS decoder that allows you to view a large amount
 <br>
 <br>
 You should see the RDSExpert plugin appearing on your webserver now. Click on it and enjoy!
-## Notes regarding use with HTTP servers hosted on a local network
+# Notes regarding use with HTTP servers hosted on a local network
 <b>⚠️ Important note to Google Chrome users: Since April 2026, connecting to HTTP servers using a local address (e.g. 192.168.1.100) is no longer possible by default. You must disable the "Local Network Access Checks" feature in your web browser to bypass this block implemented by Google, otherwise the connection will fail.
 <br>
 <br>
