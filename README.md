@@ -11,7 +11,7 @@ When the plugin is started, the connection to your server's RDS websocket is est
 RDSExpert is an advanced RDS/RBDS decoder that allows you to view a large amount of technical data related to the Radio Data System.
 <br>
 -> [For documentation about the decoder itself, please click here.](https://github.com/LucasGallone/RDSExpert/wiki/) <-
-- - -
+# Notes regarding use with HTTP servers hosted on a local network
 <b>⚠️ Important note to Google Chrome users: Since April 2026, connecting to HTTP servers using a local address (e.g. 192.168.1.100) is no longer possible by default. You must disable the "Local Network Access Checks" feature in your web browser to bypass this block implemented by Google, otherwise the connection will fail.
 <br>
 <br>
