@@ -20,9 +20,14 @@ RDSExpert is an advanced RDS/RBDS decoder that allows you to view a large amount
 <br>
 If you are concerned about the potential risks this may cause, it is best to use a different web browser such as Mozilla Firefox.
 - - -
-Since August 2026, the same restriction was added to Mozilla Firefox, also affecting connections to HTTP servers on local networks. However, the workaround is relatively easier to implement compared to Google Chrome.
+<b>Since August 2026, the same restriction was added to Mozilla Firefox, also affecting connections to HTTP servers on local networks. However, the workaround is relatively easier to implement compared to Google Chrome.</b>
 
-When attempting to connect to a "local" HTTP server, the connection will be discreetly refused. In a new browser tab, go to `http://rdsexpert.fmdx-webserver.nl:8080/` and try to connect again manually. A small window will appear near your browser's address bar, indicating that the site hosting RDSExpert is trying to access your local network. Simply click the button to grant access, then check the plugin again (don't forget to refresh your webserver page). You should now be able to use RDSExpert with your server.
+When attempting to connect to a "local" HTTP server, the connection will be discreetly refused.
+<br>
+In a new browser tab, go to `http://rdsexpert.fmdx-webserver.nl:8080/` and try to connect again manually.
+<br>
+<br>
+A small window will appear near your browser's address bar, indicating that the site hosting RDSExpert is trying to access your local network. Simply click the button to grant access, then check the plugin again (don't forget to refresh your webserver page). You should now be able to use RDSExpert with your server.
 <br>
 <br>
 Obviously, RDSExpert will only have access to RDS information from your server, and absolutely nothing else from your local network!
