@@ -11,6 +11,23 @@ When the plugin is started, the connection to your server's RDS websocket is est
 RDSExpert is an advanced RDS/RBDS decoder that allows you to view a large amount of technical data related to the Radio Data System.
 <br>
 -> [For documentation about the decoder itself, please click here.](https://github.com/LucasGallone/RDSExpert/wiki/) <-
+# Installation instructions
+1 - [Download the entire repository as a ZIP file by clicking here.](https://github.com/LucasGallone/RDSExpert-Plugin/archive/refs/heads/main.zip)
+<br>
+<br>
+2 - Extract the ZIP file content.
+<br>
+<br>
+3 - Place the `RDSExpert-Plugin.js` file and the `RDSExpert` folder (which contains `RDSExpert-Frontend.js`) in the `plugins` folder of your FM-DX webserver.
+<br>
+<br>
+4 - Restart your FM-DX webserver.
+<br>
+<br>
+5 - Access your webserver's configuration panel by using the admin account, click "Plugins" and select "RDSExpert by Lucas Gallone" in the plugins list, then save the changes.
+<br>
+<br>
+You should see the RDSExpert plugin appearing on your webserver now. Click on it and enjoy!
 # Notes regarding use with HTTP servers hosted on a local network
 <b>⚠️ Important note to Google Chrome users: Since April 2026, connecting to HTTP servers using a local address (e.g. 192.168.1.100) is no longer possible by default. You must disable the "Local Network Access Checks" feature in your web browser to bypass this block implemented by Google, otherwise the connection will fail.
 <br>
@@ -31,23 +48,6 @@ A small window will appear near your browser's address bar, indicating that the 
 <br>
 <br>
 Obviously, RDSExpert will only have access to RDS information from your server, and absolutely nothing else from your local network!
-# Installation instructions
-1 - [Download the entire repository as a ZIP file by clicking here.](https://github.com/LucasGallone/RDSExpert-Plugin/archive/refs/heads/main.zip)
-<br>
-<br>
-2 - Extract the ZIP file content.
-<br>
-<br>
-3 - Place the `RDSExpert-Plugin.js` file and the `RDSExpert` folder (which contains `RDSExpert-Frontend.js`) in the `plugins` folder of your FM-DX webserver.
-<br>
-<br>
-4 - Restart your FM-DX webserver.
-<br>
-<br>
-5 - Access your webserver's configuration panel by using the admin account, click "Plugins" and select "RDSExpert by Lucas Gallone" in the plugins list, then save the changes.
-<br>
-<br>
-You should see the RDSExpert plugin appearing on your webserver now. Click on it and enjoy!
 ## Decoded data
 • General features for the station identification: <b>PI code</b>, <b>PS</b>, <b>TP/TA flags</b> (Traffic Program - Traffic Announcement) and <b>Music/Speech switch</b>.
 <br>
